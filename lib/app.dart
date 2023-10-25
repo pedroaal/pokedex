@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:pokedex/pokemon/presentation/index.dart';
+import 'package:pokedex/presentation/main.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -13,9 +13,7 @@ class App extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      routes: {
-        '/pokemon': (context) => const PokemonPage(),
-      },
+      home: const MainPage(),
     );
   }
 }

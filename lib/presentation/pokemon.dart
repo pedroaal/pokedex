@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:pokedex/presentation/main.dart';
+
 class PokemonPage extends StatefulWidget {
   const PokemonPage({super.key});
 
@@ -10,12 +12,8 @@ class PokemonPage extends StatefulWidget {
 class _PokemonPageState extends State<PokemonPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("HOLO"),
-      ),
-      body: const Text("Hello"),
+    return const Center(
+      child: Text("Pokemon"),
     );
   }
 }
