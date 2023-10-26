@@ -24,7 +24,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Colors.red,
         title: const Text('Pokemon'),
       ),
       body: _widgetOptions.elementAt(_currentIndex),
