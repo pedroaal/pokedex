@@ -10,7 +10,14 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Pokedex',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromRGBO(204, 50, 42, 1)),
+        useMaterial3: true,
+      ),
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromRGBO(204, 50, 42, 1),
+            brightness: Brightness.dark),
         useMaterial3: true,
       ),
       home: const MainPage(),

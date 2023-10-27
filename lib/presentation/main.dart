@@ -4,6 +4,8 @@ import 'package:pokedex/presentation/items.dart';
 import 'package:pokedex/presentation/moves.dart';
 import 'package:pokedex/presentation/pokemon.dart';
 
+import 'package:pokedex/presentation/_searchSelector.dart';
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -24,28 +26,57 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         title: const Text('Pokemon'),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(40),
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            child: const Row(
+              children: <Widget>[
+                Expanded(
+                  child: TextField(
+                    style: TextStyle(fontSize: 14),
+                    decoration: InputDecoration(
+                      labelText: 'Search',
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.search),
+                      contentPadding: EdgeInsets.all(0),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 4),
+                SearchSelector(),
+              ],
+            ),
+          ),
+        ),
       ),
       body: _widgetOptions.elementAt(_currentIndex),
       bottomNavigationBar: NavigationBar(
-        indicatorColor: Colors.transparent,
+        indicatorColor: Theme.of(context).colorScheme.inversePrimary,
         selectedIndex: _currentIndex,
-        backgroundColor: Colors.red,
-        destinations: const <Widget>[
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        destinations: <Widget>[
           NavigationDestination(
-            selectedIcon: Icon(Icons.circle, color: Colors.white),
-            icon: Icon(Icons.circle_outlined, color: Colors.white),
+            selectedIcon: Icon(Icons.circle,
+                color: Theme.of(context).colorScheme.primary),
+            icon: Icon(Icons.circle_outlined,
+                color: Theme.of(context).colorScheme.primary),
             label: 'Pokemon',
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.shield, color: Colors.white),
-            icon: Icon(Icons.shield_outlined, color: Colors.white),
+            selectedIcon: Icon(Icons.shield,
+                color: Theme.of(context).colorScheme.primary),
+            icon: Icon(Icons.shield_outlined,
+                color: Theme.of(context).colorScheme.primary),
             label: 'Moves',
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.cake, color: Colors.white),
-            icon: Icon(Icons.cake_outlined, color: Colors.white),
+            selectedIcon:
+                Icon(Icons.cake, color: Theme.of(context).colorScheme.primary),
+            icon: Icon(Icons.cake_outlined,
+                color: Theme.of(context).colorScheme.primary),
             label: 'Items',
           ),
         ],

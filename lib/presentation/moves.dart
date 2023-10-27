@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class MovesPage extends StatefulWidget {
   const MovesPage({super.key});
 

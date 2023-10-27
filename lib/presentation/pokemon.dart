@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class PokemonPage extends StatefulWidget {
   const PokemonPage({super.key});
 
