@@ -5,19 +5,47 @@ Pokedex pokedexFromJson(String str) => Pokedex.fromJson(json.decode(str));
 String pokedexToJson(Pokedex data) => json.encode(data.toJson());
 
 class Pokedex {
-  List<Pokemon> pokemon;
+  List<PokemonMin> pokemon;
+  String? lastPage;
+  String? nextPage;
 
   Pokedex({
     required this.pokemon,
+    required this.lastPage,
+    required this.nextPage,
   });
 
   factory Pokedex.fromJson(Map<String, dynamic> json) => Pokedex(
-        pokemon:
-            List<Pokemon>.from(json["pokemon"].map((x) => Pokemon.fromJson(x))),
+        pokemon: List<PokemonMin>.from(
+            json["results"].map((x) => PokemonMin.fromJson(x))),
+        lastPage: json["previous"],
+        nextPage: json["next"],
       );
 
   Map<String, dynamic> toJson() => {
         "pokemon": List<dynamic>.from(pokemon.map((x) => x.toJson())),
+        "lastPage": lastPage,
+        "nextPage": nextPage,
+      };
+}
+
+class PokemonMin {
+  String name;
+  String url;
+
+  PokemonMin({
+    required this.name,
+    required this.url,
+  });
+
+  factory PokemonMin.fromJson(Map<String, dynamic> json) => PokemonMin(
+        name: json["name"],
+        url: json["url"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "url": url,
       };
 }
 

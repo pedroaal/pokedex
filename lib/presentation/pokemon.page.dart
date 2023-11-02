@@ -14,18 +14,18 @@ class PokemonPage extends StatefulWidget {
 }
 
 class _PokemonPageState extends State<PokemonPage> {
-  late Future<Pokedex> pokemon;
+  late Future<Pokedex> getAllPokemon;
 
   @override
   void initState() {
     super.initState();
-    pokemon = PokemonRepo().getAll();
+    getAllPokemon = PokemonRepo().getAll();
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: pokemon,
+      future: getAllPokemon,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return ListView.separated(

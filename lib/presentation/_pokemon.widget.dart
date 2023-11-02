@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/domain/pokemon.model.dart';
 
 class PokemonWidget extends StatelessWidget {
-  final Pokemon pokemon;
+  final PokemonMin pokemon;
 
   const PokemonWidget({super.key, required this.pokemon});
 
@@ -13,7 +13,7 @@ class PokemonWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Image.network(
-          pokemon.img,
+          pokemon.name,
           width: 50,
           height: 50,
         ),
@@ -29,7 +29,7 @@ class PokemonWidget extends StatelessWidget {
               ),
             ),
             Text(
-              '#${pokemon.num}',
+              '#${pokemon.name}',
               style: const TextStyle(
                 fontWeight: FontWeight.w300,
               ),
