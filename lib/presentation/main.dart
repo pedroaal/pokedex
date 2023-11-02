@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:pokedex/presentation/items.dart';
-import 'package:pokedex/presentation/moves.dart';
-import 'package:pokedex/presentation/pokemon.dart';
+import 'package:pokedex/presentation/items.page.dart';
+import 'package:pokedex/presentation/moves.page.dart';
+import 'package:pokedex/presentation/pokemon.page.dart';
 
-import 'package:pokedex/presentation/_searchSelector.dart';
+import 'package:pokedex/presentation/_search.widget.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -46,7 +46,7 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
                 SizedBox(width: 4),
-                SearchSelector(),
+                SearchWidget(),
               ],
             ),
           ),

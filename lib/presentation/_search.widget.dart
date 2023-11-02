@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SearchSelector extends StatefulWidget {
-  const SearchSelector({super.key});
+class SearchWidget extends StatefulWidget {
+  const SearchWidget({super.key});
 
   @override
-  State<SearchSelector> createState() => _SearchSelectorState();
+  State<SearchWidget> createState() => _SearchWidgetState();
 }
 
-class _SearchSelectorState extends State<SearchSelector> {
+class _SearchWidgetState extends State<SearchWidget> {
   int _index = 0;
 
   final List<Icon> _types = <Icon>[
