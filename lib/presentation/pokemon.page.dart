@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:pokedex/domain/pokemon.model.dart';
+import 'package:pokedex/domain/pokemon.repo.dart';
+
+import 'package:pokedex/presentation/_loader.widget.dart';
 import 'package:pokedex/presentation/_pokemon.widget.dart';
 
 class PokemonPage extends StatefulWidget {
@@ -10,31 +14,37 @@ class PokemonPage extends StatefulWidget {
 }
 
 class _PokemonPageState extends State<PokemonPage> {
+  late Future<Pokedex> pokemon;
+
+  @override
+  void initState() {
+    super.initState();
+    pokemon = PokemonRepo().getAll();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      child: const Column(
-        children: [
-          PokemonWidget(
-              thumbnail:
-                  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/Pikachu.png',
-              name: 'Pikachu',
-              number: 1),
-          SizedBox(height: 16),
-          PokemonWidget(
-              thumbnail:
-                  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/Charmander.png',
-              name: 'Charmander',
-              number: 2),
-          SizedBox(height: 16),
-          PokemonWidget(
-              thumbnail:
-                  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/Squirtle.png',
-              name: 'Squirtle',
-              number: 3),
-        ],
-      ),
+    return FutureBuilder(
+      future: pokemon,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return ListView.separated(
+            padding: const EdgeInsets.all(16),
+            itemCount: snapshot.data!.pokemon.length,
+            itemBuilder: (BuildContext context, int index) {
+              return PokemonWidget(pokemon: snapshot.data!.pokemon[index]);
+            },
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(),
+          );
+        }
+
+        if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
+
+        return const LoaderWidget();
+      },
     );
   }
 }
