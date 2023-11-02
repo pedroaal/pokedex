@@ -4,7 +4,7 @@ import 'package:pokedex/presentation/items.page.dart';
 import 'package:pokedex/presentation/moves.page.dart';
 import 'package:pokedex/presentation/pokemon.page.dart';
 
-import 'package:pokedex/presentation/_search.widget.dart';
+import 'package:pokedex/presentation/_searchBy.widget.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -46,7 +46,7 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
                 SizedBox(width: 4),
-                SearchWidget(),
+                SearchByWidget(),
               ],
             ),
           ),
