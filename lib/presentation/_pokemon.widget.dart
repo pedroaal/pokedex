@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/domain/pokemon.model.dart';
+import 'package:pokedex/data/pokemon.model.dart';
 
 class PokemonWidget extends StatelessWidget {
   final PokemonMin pokemon;
