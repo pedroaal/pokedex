@@ -107,22 +107,19 @@ class Move extends IMove {
         "contest_effect": contestEffect.toJson(),
         "damage_class": damageClass.toJson(),
         "effect_entries":
-            List<VerboseEffect>.from(effectEntries.map((x) => x.toJson())),
-        "effect_changes": List<AbilityEffectChange>.from(
-            effectChanges.map((x) => x.toJson())),
+            List<dynamic>.from(effectEntries.map((x) => x.toJson())),
+        "effect_changes":
+            List<dynamic>.from(effectChanges.map((x) => x.toJson())),
         "learned_by_pokemon":
-            List<NamedResource>.from(learnedByPokemon.map((x) => x.toJson())),
+            List<dynamic>.from(learnedByPokemon.map((x) => x.toJson())),
         "flavor_text_entries":
-            List<MoveFlavorText>.from(flavorTextEntries.map((x) => x.toJson())),
+            List<dynamic>.from(flavorTextEntries.map((x) => x.toJson())),
         "generation": generation.toJson(),
-        "machines":
-            List<MachineVersionDetail>.from(machines.map((x) => x.toJson())),
+        "machines": List<dynamic>.from(machines.map((x) => x.toJson())),
         "meta": meta.toJson(),
-        "names": List<Name>.from(names.map((x) => x.toJson())),
-        "past_values":
-            List<PastMoveStatValues>.from(pastValues.map((x) => x.toJson())),
-        "stat_changes":
-            List<MoveStatChange>.from(statChanges.map((x) => x.toJson())),
+        "names": List<dynamic>.from(names.map((x) => x.toJson())),
+        "past_values": List<dynamic>.from(pastValues.map((x) => x.toJson())),
+        "stat_changes": List<dynamic>.from(statChanges.map((x) => x.toJson())),
         "super_contest_effect": superContestEffect.toJson(),
         "target": target.toJson(),
         "type": type.toJson(),
@@ -167,9 +164,8 @@ class ContestComboDetail extends IContestComboDetail {
       );
 
   Map<String, dynamic> toJson() => {
-        "use_before":
-            List<NamedResource>.from(useBefore.map((x) => x.toJson())),
-        "use_after": List<NamedResource>.from(useAfter.map((x) => x.toJson())),
+        "use_before": List<dynamic>.from(useBefore.map((x) => x.toJson())),
+        "use_after": List<dynamic>.from(useAfter.map((x) => x.toJson())),
       };
 }
 
@@ -215,7 +211,7 @@ class AbilityEffectChange extends IAbilityEffectChange {
 
   Map<String, dynamic> toJson() => {
         "effect_entries":
-            List<Effect>.from(effectEntries.map((x) => x.toJson())),
+            List<dynamic>.from(effectEntries.map((x) => x.toJson())),
         "version_group": versionGroup.toJson(),
       };
 }
@@ -395,7 +391,7 @@ class PastMoveStatValues extends IPastMoveStatValues {
         "power": power,
         "pp": pp,
         "effect_entries":
-            List<VerboseEffect>.from(effectEntries.map((x) => x.toJson())),
+            List<dynamic>.from(effectEntries.map((x) => x.toJson())),
         "type": type.toJson(),
         "version_group": versionGroup.toJson(),
       };
