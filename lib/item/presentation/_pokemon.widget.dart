@@ -30,7 +30,7 @@ class PokemonWidget extends StatelessWidget {
               ),
             ),
             Text(
-              '#${pokemon.name}',
+              '#${pokemon.id}',
               style: const TextStyle(
                 fontWeight: FontWeight.w300,
               ),

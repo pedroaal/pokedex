@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:pokedex/data/pokemon.model.dart';
-import 'package:pokedex/data/pokemon.repo.dart';
+import 'package:pokedex/pokemon/data/pokemon.model.dart';
+import 'package:pokedex/pokemon/data/pokemon.repo.dart';
 
-import 'package:pokedex/presentation/_loader.widget.dart';
-import 'package:pokedex/presentation/_pokemon.widget.dart';
+import 'package:pokedex/core/presentation/_loader.widget.dart';
+import 'package:pokedex/pokemon/presentation/_pokemon.widget.dart';
 
 class PokemonPage extends StatefulWidget {
   const PokemonPage({super.key});

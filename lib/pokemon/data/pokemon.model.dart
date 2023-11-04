@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:pokedex/domain/pokemon.entity.dart';
+import 'package:pokedex/pokemon/domain/pokemon.entity.dart';
 
 Pokemon pokemonFromJson(String str) => Pokemon.fromJson(json.decode(str));
 

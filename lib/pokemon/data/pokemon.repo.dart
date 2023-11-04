@@ -1,6 +1,6 @@
-import 'package:pokedex/data/pokemon.remote.dart';
-import 'package:pokedex/data/pokemon.model.dart';
-import 'package:pokedex/domain/pokemon.repo.dart';
+import 'package:pokedex/pokemon/data/pokemon.remote.dart';
+import 'package:pokedex/pokemon/data/pokemon.model.dart';
+import 'package:pokedex/pokemon/domain/pokemon.repo.dart';
 
 class PokemonRepo implements IPokemonRepo {
   @override

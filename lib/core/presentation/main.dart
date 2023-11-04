@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:pokedex/presentation/items.page.dart';
-import 'package:pokedex/presentation/moves.page.dart';
-import 'package:pokedex/presentation/pokemon.page.dart';
+import 'package:pokedex/item/presentation/items.page.dart';
+import 'package:pokedex/move/presentation/moves.page.dart';
+import 'package:pokedex/pokemon/presentation/pokemon.page.dart';
 
-import 'package:pokedex/presentation/_searchBy.widget.dart';
+import 'package:pokedex/core/presentation/_searchBy.widget.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

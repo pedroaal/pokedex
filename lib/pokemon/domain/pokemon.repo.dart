@@ -1,4 +1,4 @@
-import 'package:pokedex/data/pokemon.model.dart';
+import 'package:pokedex/pokemon/data/pokemon.model.dart';
 
 abstract class IPokemonRepo {
   Future<List<Pokemon>> getAll({required int page});
