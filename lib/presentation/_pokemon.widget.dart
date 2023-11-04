@@ -14,7 +14,7 @@ class PokemonWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Image.network(
-          pokemon.img,
+          pokemon.sprites.frontDefault,
           width: 50,
           height: 50,
         ),
