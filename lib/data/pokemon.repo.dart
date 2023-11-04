@@ -4,8 +4,8 @@ import 'package:pokedex/domain/pokemon.repo.dart';
 
 class PokemonRepo implements IPokemonRepo {
   @override
-  Future<Pokedex> getAll() async {
-    return await PokemonRemote().findAll();
+  Future<List<Pokemon>> getAll({required int page}) async {
+    return await PokemonRemote().findAll(page: page);
   }
 
   @override

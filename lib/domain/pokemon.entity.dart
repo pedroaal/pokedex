@@ -3,31 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:pokedex/core/enum.dart';
 import 'package:pokedex/data/pokemon.model.dart';
 
-class IPokemonMin {
-  String name;
-  String url;
-
-  IPokemonMin({
-    required this.name,
-    required this.url,
-  });
-
-  @override
-  List<Object> get props => [name, url];
-}
-
-class IPokedex {
-  List<PokemonMin> pokemon;
-  String? lastPage;
-  String? nextPage;
-
-  IPokedex({
-    required this.pokemon,
-    required this.lastPage,
-    required this.nextPage,
-  });
-}
-
 enum Egg { NOT_IN_EGGS, OMANYTE_CANDY, THE_10_KM, THE_2_KM, THE_5_KM }
 
 final eggValues = EnumValues({

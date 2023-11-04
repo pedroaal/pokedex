@@ -14,12 +14,12 @@ class PokemonPage extends StatefulWidget {
 }
 
 class _PokemonPageState extends State<PokemonPage> {
-  late Future<Pokedex> getAllPokemon;
+  late Future<List<Pokemon>> getAllPokemon;
 
   @override
   void initState() {
     super.initState();
-    getAllPokemon = PokemonRepo().getAll();
+    getAllPokemon = PokemonRepo().getAll(page: 0);
   }
 
   @override
@@ -30,9 +30,9 @@ class _PokemonPageState extends State<PokemonPage> {
         if (snapshot.hasData) {
           return ListView.separated(
             padding: const EdgeInsets.all(16),
-            itemCount: snapshot.data!.pokemon.length,
+            itemCount: snapshot.data!.length,
             itemBuilder: (BuildContext context, int index) {
-              return PokemonWidget(pokemon: snapshot.data!.pokemon[index]);
+              return PokemonWidget(pokemon: snapshot.data![index]);
             },
             separatorBuilder: (BuildContext context, int index) =>
                 const Divider(),

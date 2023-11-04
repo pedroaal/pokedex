@@ -1,50 +1,5 @@
 import 'package:pokedex/domain/pokemon.entity.dart';
 
-class Pokedex extends IPokedex {
-  Pokedex({
-    required List<PokemonMin> pokemon,
-    required String? lastPage,
-    required String? nextPage,
-  }) : super(
-          pokemon: pokemon,
-          lastPage: lastPage,
-          nextPage: nextPage,
-        );
-
-  factory Pokedex.fromJson(Map<String, dynamic> json) => Pokedex(
-        pokemon: List<PokemonMin>.from(
-            json["results"].map((item) => PokemonMin.fromJson(item))),
-        lastPage: json["previous"],
-        nextPage: json["next"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "pokemon": List<dynamic>.from(pokemon.map((item) => item.toJson())),
-        "lastPage": lastPage,
-        "nextPage": nextPage,
-      };
-}
-
-class PokemonMin extends IPokemonMin {
-  PokemonMin({
-    required String name,
-    required String url,
-  }) : super(
-          name: name,
-          url: url,
-        );
-
-  factory PokemonMin.fromJson(Map<String, dynamic> json) => PokemonMin(
-        name: json["name"],
-        url: json["url"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "url": url,
-      };
-}
-
 class Evolution extends IEvolution {
   Evolution({
     required String num,
