@@ -1,38 +1,38 @@
 import 'package:flutter/material.dart';
 
-import 'package:pokedex/pokemon/data/pokemon.model.dart';
-import 'package:pokedex/pokemon/data/pokemon.repo.dart';
+import 'package:pokedex/item/data/item.model.dart';
+import 'package:pokedex/item/data/item.repo.dart';
 
 import 'package:pokedex/core/presentation/_loader.widget.dart';
-import 'package:pokedex/pokemon/presentation/_pokemon.widget.dart';
+import 'package:pokedex/item/presentation/_item.widget.dart';
 
-class MovesPage extends StatefulWidget {
-  const MovesPage({super.key});
+class ItemsPage extends StatefulWidget {
+  const ItemsPage({super.key});
 
   @override
-  State<MovesPage> createState() => _MovesPageState();
+  State<ItemsPage> createState() => _ItemsPageState();
 }
 
-class _MovesPageState extends State<MovesPage> {
-  late Future<List<Pokemon>> getAllPokemon;
+class _ItemsPageState extends State<ItemsPage> {
+  late Future<List<Item>> getAll;
 
   @override
   void initState() {
     super.initState();
-    getAllPokemon = PokemonRepo().getAll(page: 0);
+    getAll = ItemRepo().getAll(page: 0);
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: getAllPokemon,
+      future: getAll,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return ListView.separated(
             padding: const EdgeInsets.all(16),
             itemCount: snapshot.data!.length,
             itemBuilder: (BuildContext context, int index) {
-              return PokemonWidget(pokemon: snapshot.data![index]);
+              return ItemWidget(item: snapshot.data![index]);
             },
             separatorBuilder: (BuildContext context, int index) =>
                 const Divider(),
