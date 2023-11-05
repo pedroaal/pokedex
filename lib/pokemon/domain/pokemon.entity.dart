@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:pokedex/core/data/base.model.dart';
 
+import 'package:pokedex/core/data/base.model.dart';
 import 'package:pokedex/pokemon/data/pokemon.model.dart';
 
 class IPokemon {
@@ -165,34 +165,30 @@ class IPokemonType {
 class IPokemonSprites {
   String frontDefault;
   String frontShiny;
-  String frontFemale;
-  String frontShinyFemale;
+  String? frontFemale;
+  String? frontShinyFemale;
   String backDefault;
   String backShiny;
-  String backFemale;
-  String backShinyFemale;
+  String? backFemale;
+  String? backShinyFemale;
 
   IPokemonSprites({
     required this.frontDefault,
     required this.frontShiny,
-    required this.frontFemale,
-    required this.frontShinyFemale,
+    this.frontFemale,
+    this.frontShinyFemale,
     required this.backDefault,
     required this.backShiny,
-    required this.backFemale,
-    required this.backShinyFemale,
+    this.backFemale,
+    this.backShinyFemale,
   });
 
   @override
   List<Object> get props => [
         frontDefault,
         frontShiny,
-        frontFemale,
-        frontShinyFemale,
         backDefault,
         backShiny,
-        backFemale,
-        backShinyFemale,
       ];
 }
 

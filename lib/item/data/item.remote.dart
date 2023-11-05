@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:pokedex/core/configs/api.dart';
@@ -16,7 +15,7 @@ class ItemRemote {
     final response = await http.get(Uri.parse('$POKE_API/item/$query'));
 
     if (response.statusCode == 200) {
-      return Item.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+      return itemFromJson(response.body);
     } else {
       throw Exception('Failed to load item');
     }

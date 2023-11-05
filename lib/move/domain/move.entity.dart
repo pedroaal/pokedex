@@ -6,12 +6,12 @@ import 'package:pokedex/move/data/move.model.dart';
 class IMove {
   int id;
   String name;
-  int accuracy;
-  int effectChance;
+  int? accuracy;
+  int? effectChance;
   int pp;
   int priority;
   int power;
-  ContestCombos contestCombos;
+  ContestCombos? contestCombos;
   NamedApiResource contestType;
   ApiResource contestEffect;
   NamedApiResource damageClass;
@@ -32,12 +32,12 @@ class IMove {
   IMove({
     required this.id,
     required this.name,
-    required this.accuracy,
-    required this.effectChance,
+    this.accuracy,
+    this.effectChance,
     required this.pp,
     required this.priority,
     required this.power,
-    required this.contestCombos,
+    this.contestCombos,
     required this.contestType,
     required this.contestEffect,
     required this.damageClass,
@@ -60,12 +60,9 @@ class IMove {
   List<Object> get props => [
         id,
         name,
-        accuracy,
-        effectChance,
         pp,
         priority,
         power,
-        contestCombos,
         contestType,
         contestEffect,
         damageClass,
@@ -101,19 +98,16 @@ class IContestCombos {
 }
 
 class IContestComboDetail {
-  List<NamedApiResource> useBefore;
-  List<NamedApiResource> useAfter;
+  List<NamedApiResource>? useBefore;
+  List<NamedApiResource>? useAfter;
 
   IContestComboDetail({
-    required this.useBefore,
-    required this.useAfter,
+    this.useBefore,
+    this.useAfter,
   });
 
   @override
-  List<Object> get props => [
-        useBefore,
-        useAfter,
-      ];
+  List<Object> get props => [];
 }
 
 class IAbilityEffectChange {
@@ -170,10 +164,10 @@ class IMoveFlavorText {
 class IMeta {
   NamedApiResource ailment;
   NamedApiResource category;
-  int minHits;
-  int maxHits;
-  int minTurns;
-  int maxTurns;
+  int? minHits;
+  int? maxHits;
+  int? minTurns;
+  int? maxTurns;
   int drain;
   int healing;
   int critRate;
@@ -184,10 +178,10 @@ class IMeta {
   IMeta({
     required this.ailment,
     required this.category,
-    required this.minHits,
-    required this.maxHits,
-    required this.minTurns,
-    required this.maxTurns,
+    this.minHits,
+    this.maxHits,
+    this.minTurns,
+    this.maxTurns,
     required this.drain,
     required this.healing,
     required this.critRate,
@@ -200,10 +194,6 @@ class IMeta {
   List<Object> get props => [
         ailment,
         category,
-        minHits,
-        maxHits,
-        minTurns,
-        maxTurns,
         drain,
         healing,
         critRate,
@@ -214,8 +204,8 @@ class IMeta {
 }
 
 class IPastMoveStatValues {
-  int accuracy;
-  int effectChance;
+  int? accuracy;
+  int? effectChance;
   int power;
   int pp;
   List<VerboseEffect> effectEntries;
@@ -223,8 +213,8 @@ class IPastMoveStatValues {
   NamedApiResource versionGroup;
 
   IPastMoveStatValues({
-    required this.accuracy,
-    required this.effectChance,
+    this.accuracy,
+    this.effectChance,
     required this.power,
     required this.pp,
     required this.effectEntries,
@@ -234,8 +224,6 @@ class IPastMoveStatValues {
 
   @override
   List<Object> get props => [
-        accuracy,
-        effectChance,
         power,
         pp,
         effectEntries,

@@ -84,8 +84,8 @@ class MachineVersionDetail extends IMachineVersionDetail {
 
   factory MachineVersionDetail.fromJson(Map<String, dynamic> json) =>
       MachineVersionDetail(
-        machine: ApiResource.fromJson(json["flavor_text"]),
-        versionGroup: NamedApiResource.fromJson(json["versionGroup"]),
+        machine: ApiResource.fromJson(json["machine"]),
+        versionGroup: NamedApiResource.fromJson(json["version_group"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -127,7 +127,7 @@ class VersionGroupFlavorText extends IVersionGroupFlavorText {
       VersionGroupFlavorText(
         text: json["text"],
         language: NamedApiResource.fromJson(json["language"]),
-        versionGroup: NamedApiResource.fromJson(json["versionGroup"]),
+        versionGroup: NamedApiResource.fromJson(json["version_group"]),
       );
 
   Map<String, dynamic> toJson() => {

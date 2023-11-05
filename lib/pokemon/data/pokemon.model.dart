@@ -259,12 +259,12 @@ class PokemonSprites extends IPokemonSprites {
   PokemonSprites({
     required String frontDefault,
     required String frontShiny,
-    required dynamic frontFemale,
-    required dynamic frontShinyFemale,
+    String? frontFemale,
+    String? frontShinyFemale,
     required String backDefault,
     required String backShiny,
-    required dynamic backFemale,
-    required dynamic backShinyFemale,
+    String? backFemale,
+    String? backShinyFemale,
   }) : super(
           frontDefault: frontDefault,
           frontShiny: frontShiny,

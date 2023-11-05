@@ -11,12 +11,12 @@ class Move extends IMove {
   Move({
     required int id,
     required String name,
-    required int accuracy,
-    required int effectChance,
+    int? accuracy,
+    int? effectChance,
     required int pp,
     required int priority,
     required int power,
-    required ContestCombos contestCombos,
+    ContestCombos? contestCombos,
     required NamedApiResource contestType,
     required ApiResource contestEffect,
     required NamedApiResource damageClass,
@@ -68,12 +68,14 @@ class Move extends IMove {
         pp: json["pp"],
         priority: json["priority"],
         power: json["power"],
-        contestCombos: ContestCombos.fromJson(json["contest_combos"]),
+        contestCombos: json["contest_combos"] != null
+            ? ContestCombos.fromJson(json["contest_combos"])
+            : null,
         contestType: NamedApiResource.fromJson(json["contest_type"]),
         contestEffect: ApiResource.fromJson(json["contest_effect"]),
         damageClass: NamedApiResource.fromJson(json["damage_class"]),
         effectEntries: List<VerboseEffect>.from(
-            json["effect_entries"].map((x) => Effect.fromJson(x))),
+            json["effect_entries"].map((x) => VerboseEffect.fromJson(x))),
         effectChanges: List<AbilityEffectChange>.from(
             json["effect_changes"].map((x) => AbilityEffectChange.fromJson(x))),
         learnedByPokemon: List<NamedApiResource>.from(json["learned_by_pokemon"]
@@ -102,7 +104,7 @@ class Move extends IMove {
         "pp": pp,
         "priority": priority,
         "power": power,
-        "contest_combos": contestCombos.toJson(),
+        "contest_combos": contestCombos!.toJson(),
         "contest_type": contestType.toJson(),
         "contest_effect": contestEffect.toJson(),
         "damage_class": damageClass.toJson(),
@@ -148,8 +150,8 @@ class ContestCombos extends IContestCombos {
 
 class ContestComboDetail extends IContestComboDetail {
   ContestComboDetail({
-    required List<NamedApiResource> useBefore,
-    required List<NamedApiResource> useAfter,
+    List<NamedApiResource>? useBefore,
+    List<NamedApiResource>? useAfter,
   }) : super(
           useBefore: useBefore,
           useAfter: useAfter,
@@ -157,15 +159,18 @@ class ContestComboDetail extends IContestComboDetail {
 
   factory ContestComboDetail.fromJson(Map<String, dynamic> json) =>
       ContestComboDetail(
-        useBefore: List<NamedApiResource>.from(
-            json["use_before"].map((x) => NamedApiResource.fromJson(x))),
-        useAfter: List<NamedApiResource>.from(
-            json["use_after"].map((x) => NamedApiResource.fromJson(x))),
-      );
+          useBefore: json["use_before"] != null
+              ? List<NamedApiResource>.from(
+                  json["use_before"].map((x) => NamedApiResource.fromJson(x)))
+              : [],
+          useAfter: json["use_after"] != null
+              ? List<NamedApiResource>.from(
+                  json["use_after"].map((x) => NamedApiResource.fromJson(x)))
+              : []);
 
   Map<String, dynamic> toJson() => {
-        "use_before": List<dynamic>.from(useBefore.map((x) => x.toJson())),
-        "use_after": List<dynamic>.from(useAfter.map((x) => x.toJson())),
+        "use_before": List<dynamic>.from(useBefore!.map((x) => x.toJson())),
+        "use_after": List<dynamic>.from(useAfter!.map((x) => x.toJson())),
       };
 }
 
@@ -236,10 +241,10 @@ class Meta extends IMeta {
   Meta({
     required NamedApiResource ailment,
     required NamedApiResource category,
-    required int minHits,
-    required int maxHits,
-    required int minTurns,
-    required int maxTurns,
+    int? minHits,
+    int? maxHits,
+    int? minTurns,
+    int? maxTurns,
     required int drain,
     required int healing,
     required int critRate,
@@ -294,8 +299,8 @@ class Meta extends IMeta {
 
 class PastMoveStatValues extends IPastMoveStatValues {
   PastMoveStatValues({
-    required int accuracy,
-    required int effectChance,
+    int? accuracy,
+    int? effectChance,
     required int power,
     required int pp,
     required List<VerboseEffect> effectEntries,
