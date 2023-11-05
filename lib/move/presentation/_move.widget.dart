@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:pokedex/data/pokemon.model.dart';
+import 'package:pokedex/move/data/move.model.dart';
 
-class PokemonWidget extends StatelessWidget {
-  final Pokemon pokemon;
+class MoveWidget extends StatelessWidget {
+  final Move move;
 
-  const PokemonWidget({super.key, required this.pokemon});
+  const MoveWidget({super.key, required this.move});
 
   @override
   Widget build(BuildContext context) {
@@ -13,24 +13,18 @@ class PokemonWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.network(
-          pokemon.sprites.frontDefault,
-          width: 50,
-          height: 50,
-        ),
-        const SizedBox(width: 16),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              pokemon.name,
+              move.name,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
-              '#${pokemon.id}',
+              '#${move.id}',
               style: const TextStyle(
                 fontWeight: FontWeight.w300,
               ),

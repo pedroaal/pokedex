@@ -63,7 +63,7 @@ class Pokemon extends IPokemon {
         gameIndices: List<VersionGameIndex>.from(
             json["game_indices"].map((x) => VersionGameIndex.fromJson(x))),
         heldItems: List<PokemonHeldItem>.from(
-            json["held_items"].map((x) => PokemonHeldItem.fromJsom(x))),
+            json["held_items"].map((x) => PokemonHeldItem.fromJson(x))),
         locationAreaEncounters: json["location_area_encounters"],
         moves: List<PokemonMove>.from(
             json["moves"].map((x) => PokemonMove.fromJson(x))),

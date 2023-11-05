@@ -13,13 +13,12 @@ class ItemRemote {
   }
 
   Future<Item> findOne({required String query}) async {
-    final response = await http.get(Uri.parse('$POKE_API/pokemon/$query'));
+    final response = await http.get(Uri.parse('$POKE_API/item/$query'));
 
     if (response.statusCode == 200) {
-      return Item.fromJson(
-          jsonDecode(response.body) as Map<String, dynamic>);
+      return Item.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
     } else {
-      throw Exception('Failed to load pokemon');
+      throw Exception('Failed to load item');
     }
   }
 }
