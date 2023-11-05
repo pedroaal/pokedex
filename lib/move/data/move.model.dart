@@ -17,22 +17,22 @@ class Move extends IMove {
     required int priority,
     required int power,
     required ContestCombos contestCombos,
-    required NamedResource contestType,
-    required Resource contestEffect,
-    required NamedResource damageClass,
+    required NamedApiResource contestType,
+    required ApiResource contestEffect,
+    required NamedApiResource damageClass,
     required List<VerboseEffect> effectEntries,
     required List<AbilityEffectChange> effectChanges,
-    required List<NamedResource> learnedByPokemon,
+    required List<NamedApiResource> learnedByPokemon,
     required List<MoveFlavorText> flavorTextEntries,
-    required NamedResource generation,
+    required NamedApiResource generation,
     required List<MachineVersionDetail> machines,
     required Meta meta,
     required List<Name> names,
     required List<PastMoveStatValues> pastValues,
     required List<MoveStatChange> statChanges,
-    required Resource superContestEffect,
-    required NamedResource target,
-    required NamedResource type,
+    required ApiResource superContestEffect,
+    required NamedApiResource target,
+    required NamedApiResource type,
   }) : super(
           id: id,
           name: name,
@@ -69,18 +69,18 @@ class Move extends IMove {
         priority: json["priority"],
         power: json["power"],
         contestCombos: ContestCombos.fromJson(json["contest_combos"]),
-        contestType: NamedResource.fromJson(json["contest_type"]),
-        contestEffect: Resource.fromJson(json["contest_effect"]),
-        damageClass: NamedResource.fromJson(json["damage_class"]),
+        contestType: NamedApiResource.fromJson(json["contest_type"]),
+        contestEffect: ApiResource.fromJson(json["contest_effect"]),
+        damageClass: NamedApiResource.fromJson(json["damage_class"]),
         effectEntries: List<VerboseEffect>.from(
             json["effect_entries"].map((x) => Effect.fromJson(x))),
         effectChanges: List<AbilityEffectChange>.from(
             json["effect_changes"].map((x) => AbilityEffectChange.fromJson(x))),
-        learnedByPokemon: List<NamedResource>.from(
-            json["learned_by_pokemon"].map((x) => NamedResource.fromJson(x))),
+        learnedByPokemon: List<NamedApiResource>.from(json["learned_by_pokemon"]
+            .map((x) => NamedApiResource.fromJson(x))),
         flavorTextEntries: List<MoveFlavorText>.from(
             json["flavor_text_entries"].map((x) => MoveFlavorText.fromJson(x))),
-        generation: NamedResource.fromJson(json["generation"]),
+        generation: NamedApiResource.fromJson(json["generation"]),
         machines: List<MachineVersionDetail>.from(
             json["machines"].map((x) => MachineVersionDetail.fromJson(x))),
         meta: Meta.fromJson(json["meta"]),
@@ -89,9 +89,9 @@ class Move extends IMove {
             json["past_values"].map((x) => PastMoveStatValues.fromJson(x))),
         statChanges: List<MoveStatChange>.from(
             json["stat_changes"].map((x) => MoveStatChange.fromJson(x))),
-        superContestEffect: Resource.fromJson(json["super_contest_effect"]),
-        target: NamedResource.fromJson(json["target"]),
-        type: NamedResource.fromJson(json["type"]),
+        superContestEffect: ApiResource.fromJson(json["super_contest_effect"]),
+        target: NamedApiResource.fromJson(json["target"]),
+        type: NamedApiResource.fromJson(json["type"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -148,8 +148,8 @@ class ContestCombos extends IContestCombos {
 
 class ContestComboDetail extends IContestComboDetail {
   ContestComboDetail({
-    required List<NamedResource> useBefore,
-    required List<NamedResource> useAfter,
+    required List<NamedApiResource> useBefore,
+    required List<NamedApiResource> useAfter,
   }) : super(
           useBefore: useBefore,
           useAfter: useAfter,
@@ -157,10 +157,10 @@ class ContestComboDetail extends IContestComboDetail {
 
   factory ContestComboDetail.fromJson(Map<String, dynamic> json) =>
       ContestComboDetail(
-        useBefore: List<NamedResource>.from(
-            json["use_before"].map((x) => NamedResource.fromJson(x))),
-        useAfter: List<NamedResource>.from(
-            json["use_after"].map((x) => NamedResource.fromJson(x))),
+        useBefore: List<NamedApiResource>.from(
+            json["use_before"].map((x) => NamedApiResource.fromJson(x))),
+        useAfter: List<NamedApiResource>.from(
+            json["use_after"].map((x) => NamedApiResource.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -169,34 +169,10 @@ class ContestComboDetail extends IContestComboDetail {
       };
 }
 
-class VerboseEffect extends IVerboseEffect {
-  VerboseEffect({
-    required String effect,
-    required String shortEffect,
-    required NamedResource language,
-  }) : super(
-          effect: effect,
-          shortEffect: shortEffect,
-          language: language,
-        );
-
-  factory VerboseEffect.fromJson(Map<String, dynamic> json) => VerboseEffect(
-        effect: json["effect"],
-        shortEffect: json["short_effect"],
-        language: NamedResource.fromJson(json["language"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "effect": effect,
-        "short_effect": shortEffect,
-        "language": language.toJson(),
-      };
-}
-
 class AbilityEffectChange extends IAbilityEffectChange {
   AbilityEffectChange({
     required List<Effect> effectEntries,
-    required NamedResource versionGroup,
+    required NamedApiResource versionGroup,
   }) : super(
           effectEntries: effectEntries,
           versionGroup: versionGroup,
@@ -206,7 +182,7 @@ class AbilityEffectChange extends IAbilityEffectChange {
       AbilityEffectChange(
         effectEntries: List<Effect>.from(
             json["effect_entries"].map((x) => Effect.fromJson(x))),
-        versionGroup: NamedResource.fromJson(json["version_group"]),
+        versionGroup: NamedApiResource.fromJson(json["version_group"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -219,12 +195,12 @@ class AbilityEffectChange extends IAbilityEffectChange {
 class Effect extends IEffect {
   Effect({
     required String effect,
-    required NamedResource language,
+    required NamedApiResource language,
   }) : super(effect: effect, language: language);
 
   factory Effect.fromJson(Map<String, dynamic> json) => Effect(
         effect: json["effect"],
-        language: NamedResource.fromJson(json["language"]),
+        language: NamedApiResource.fromJson(json["language"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -236,8 +212,8 @@ class Effect extends IEffect {
 class MoveFlavorText extends IMoveFlavorText {
   MoveFlavorText({
     required String flavorText,
-    required NamedResource language,
-    required NamedResource versionGroup,
+    required NamedApiResource language,
+    required NamedApiResource versionGroup,
   }) : super(
             flavorText: flavorText,
             language: language,
@@ -245,8 +221,8 @@ class MoveFlavorText extends IMoveFlavorText {
 
   factory MoveFlavorText.fromJson(Map<String, dynamic> json) => MoveFlavorText(
         flavorText: json["flavor_text"],
-        language: NamedResource.fromJson(json["language"]),
-        versionGroup: NamedResource.fromJson(json["version_group"]),
+        language: NamedApiResource.fromJson(json["language"]),
+        versionGroup: NamedApiResource.fromJson(json["version_group"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -256,31 +232,10 @@ class MoveFlavorText extends IMoveFlavorText {
       };
 }
 
-class MachineVersionDetail extends IMachineVersionDetail {
-  MachineVersionDetail({
-    required Resource machine,
-    required NamedResource versionGroup,
-  }) : super(
-          machine: machine,
-          versionGroup: versionGroup,
-        );
-
-  factory MachineVersionDetail.fromJson(Map<String, dynamic> json) =>
-      MachineVersionDetail(
-        machine: Resource.fromJson(json["flavor_text"]),
-        versionGroup: NamedResource.fromJson(json["versionGroup"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "machine": machine.toJson(),
-        "version_group": versionGroup.toJson(),
-      };
-}
-
 class Meta extends IMeta {
   Meta({
-    required NamedResource ailment,
-    required NamedResource category,
+    required NamedApiResource ailment,
+    required NamedApiResource category,
     required int minHits,
     required int maxHits,
     required int minTurns,
@@ -307,8 +262,8 @@ class Meta extends IMeta {
         );
 
   factory Meta.fromJson(Map<String, dynamic> json) => Meta(
-        ailment: NamedResource.fromJson(json["ailment"]),
-        category: NamedResource.fromJson(json["category"]),
+        ailment: NamedApiResource.fromJson(json["ailment"]),
+        category: NamedApiResource.fromJson(json["category"]),
         minHits: json["min_hits"],
         maxHits: json["max_hits"],
         minTurns: json["min_turns"],
@@ -337,23 +292,6 @@ class Meta extends IMeta {
       };
 }
 
-class Name extends IName {
-  Name({
-    required String name,
-    required NamedResource language,
-  }) : super(name: name, language: language);
-
-  factory Name.fromJson(Map<String, dynamic> json) => Name(
-        name: json["name"],
-        language: NamedResource.fromJson(json["language"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "language": language.toJson(),
-      };
-}
-
 class PastMoveStatValues extends IPastMoveStatValues {
   PastMoveStatValues({
     required int accuracy,
@@ -361,8 +299,8 @@ class PastMoveStatValues extends IPastMoveStatValues {
     required int power,
     required int pp,
     required List<VerboseEffect> effectEntries,
-    required NamedResource type,
-    required NamedResource versionGroup,
+    required NamedApiResource type,
+    required NamedApiResource versionGroup,
   }) : super(
           accuracy: accuracy,
           effectChance: effectChance,
@@ -381,8 +319,8 @@ class PastMoveStatValues extends IPastMoveStatValues {
         pp: json["pp"],
         effectEntries: List<VerboseEffect>.from(
             json["effect_entries"].map((x) => VerboseEffect.fromJson(x))),
-        type: NamedResource.fromJson(json["type"]),
-        versionGroup: NamedResource.fromJson(json["version_group"]),
+        type: NamedApiResource.fromJson(json["type"]),
+        versionGroup: NamedApiResource.fromJson(json["version_group"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -400,12 +338,12 @@ class PastMoveStatValues extends IPastMoveStatValues {
 class MoveStatChange extends IMoveStatChange {
   MoveStatChange({
     required int change,
-    required NamedResource stat,
+    required NamedApiResource stat,
   }) : super(change: change, stat: stat);
 
   factory MoveStatChange.fromJson(Map<String, dynamic> json) => MoveStatChange(
         change: json["change"],
-        stat: NamedResource.fromJson(json["stat"]),
+        stat: NamedApiResource.fromJson(json["stat"]),
       );
 
   Map<String, dynamic> toJson() => {

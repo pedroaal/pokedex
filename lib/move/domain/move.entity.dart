@@ -12,22 +12,22 @@ class IMove {
   int priority;
   int power;
   ContestCombos contestCombos;
-  NamedResource contestType;
-  Resource contestEffect;
-  NamedResource damageClass;
+  NamedApiResource contestType;
+  ApiResource contestEffect;
+  NamedApiResource damageClass;
   List<VerboseEffect> effectEntries;
   List<AbilityEffectChange> effectChanges;
-  List<NamedResource> learnedByPokemon;
+  List<NamedApiResource> learnedByPokemon;
   List<MoveFlavorText> flavorTextEntries;
-  NamedResource generation;
+  NamedApiResource generation;
   List<MachineVersionDetail> machines;
   Meta meta;
   List<Name> names;
   List<PastMoveStatValues> pastValues;
   List<MoveStatChange> statChanges;
-  Resource superContestEffect;
-  NamedResource target;
-  NamedResource type;
+  ApiResource superContestEffect;
+  NamedApiResource target;
+  NamedApiResource type;
 
   IMove({
     required this.id,
@@ -101,8 +101,8 @@ class IContestCombos {
 }
 
 class IContestComboDetail {
-  List<NamedResource> useBefore;
-  List<NamedResource> useAfter;
+  List<NamedApiResource> useBefore;
+  List<NamedApiResource> useAfter;
 
   IContestComboDetail({
     required this.useBefore,
@@ -116,28 +116,9 @@ class IContestComboDetail {
       ];
 }
 
-class IVerboseEffect {
-  String effect;
-  String shortEffect;
-  NamedResource language;
-
-  IVerboseEffect({
-    required this.effect,
-    required this.shortEffect,
-    required this.language,
-  });
-
-  @override
-  List<Object> get props => [
-        effect,
-        shortEffect,
-        language,
-      ];
-}
-
 class IAbilityEffectChange {
   List<Effect> effectEntries;
-  NamedResource versionGroup;
+  NamedApiResource versionGroup;
 
   IAbilityEffectChange({
     required this.effectEntries,
@@ -153,7 +134,7 @@ class IAbilityEffectChange {
 
 class IEffect {
   String effect;
-  NamedResource language;
+  NamedApiResource language;
 
   IEffect({
     required this.effect,
@@ -169,8 +150,8 @@ class IEffect {
 
 class IMoveFlavorText {
   String flavorText;
-  NamedResource language;
-  NamedResource versionGroup;
+  NamedApiResource language;
+  NamedApiResource versionGroup;
 
   IMoveFlavorText({
     required this.flavorText,
@@ -186,25 +167,9 @@ class IMoveFlavorText {
       ];
 }
 
-class IMachineVersionDetail {
-  Resource machine;
-  NamedResource versionGroup;
-
-  IMachineVersionDetail({
-    required this.machine,
-    required this.versionGroup,
-  });
-
-  @override
-  List<Object> get props => [
-        machine,
-        versionGroup,
-      ];
-}
-
 class IMeta {
-  NamedResource ailment;
-  NamedResource category;
+  NamedApiResource ailment;
+  NamedApiResource category;
   int minHits;
   int maxHits;
   int minTurns;
@@ -248,30 +213,14 @@ class IMeta {
       ];
 }
 
-class IName {
-  String name;
-  NamedResource language;
-
-  IName({
-    required this.name,
-    required this.language,
-  });
-
-  @override
-  List<Object> get props => [
-        name,
-        language,
-      ];
-}
-
 class IPastMoveStatValues {
   int accuracy;
   int effectChance;
   int power;
   int pp;
   List<VerboseEffect> effectEntries;
-  NamedResource type;
-  NamedResource versionGroup;
+  NamedApiResource type;
+  NamedApiResource versionGroup;
 
   IPastMoveStatValues({
     required this.accuracy,
@@ -297,7 +246,7 @@ class IPastMoveStatValues {
 
 class IMoveStatChange {
   int change;
-  NamedResource stat;
+  NamedApiResource stat;
 
   IMoveStatChange({
     required this.change,

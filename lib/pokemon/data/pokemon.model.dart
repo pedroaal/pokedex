@@ -17,14 +17,14 @@ class Pokemon extends IPokemon {
     required int order,
     required int weight,
     required List<PokemonAbility> abilities,
-    required List<NamedResource> forms,
+    required List<NamedApiResource> forms,
     required List<VersionGameIndex> gameIndices,
     required List<PokemonHeldItem> heldItems,
     required String locationAreaEncounters,
     required List<PokemonMove> moves,
     required List<PokemonTypePast> pastTypes,
     required PokemonSprites sprites,
-    required NamedResource species,
+    required NamedApiResource species,
     required List<PokemonStat> stats,
     required List<PokemonType> types,
   }) : super(
@@ -58,8 +58,8 @@ class Pokemon extends IPokemon {
         weight: json["weight"],
         abilities: List<PokemonAbility>.from(
             json["abilities"].map((x) => PokemonAbility.fromJson(x))),
-        forms: List<NamedResource>.from(
-            json["forms"].map((x) => NamedResource.fromJson(x))),
+        forms: List<NamedApiResource>.from(
+            json["forms"].map((x) => NamedApiResource.fromJson(x))),
         gameIndices: List<VersionGameIndex>.from(
             json["game_indices"].map((x) => VersionGameIndex.fromJson(x))),
         heldItems: List<PokemonHeldItem>.from(
@@ -70,7 +70,7 @@ class Pokemon extends IPokemon {
         pastTypes: List<PokemonTypePast>.from(
             json["past_types"].map((x) => PokemonTypePast.fromJson(x))),
         sprites: PokemonSprites.fromJson(json["sprites"]),
-        species: NamedResource.fromJson(json["species"]),
+        species: NamedApiResource.fromJson(json["species"]),
         stats: List<PokemonStat>.from(
             json["stats"].map((x) => PokemonStat.fromJson(x))),
         types: List<PokemonType>.from(
@@ -103,7 +103,7 @@ class PokemonAbility extends IPokemonAbility {
   PokemonAbility({
     required bool isHidden,
     required int slot,
-    required NamedResource ability,
+    required NamedApiResource ability,
   }) : super(
           isHidden: isHidden,
           slot: slot,
@@ -113,7 +113,7 @@ class PokemonAbility extends IPokemonAbility {
   factory PokemonAbility.fromJson(Map<String, dynamic> json) => PokemonAbility(
         isHidden: json["is_hidden"],
         slot: json["slot"],
-        ability: NamedResource.fromJson(json["ability"]),
+        ability: NamedApiResource.fromJson(json["ability"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -123,27 +123,9 @@ class PokemonAbility extends IPokemonAbility {
       };
 }
 
-class VersionGameIndex extends IVersionGameIndex {
-  VersionGameIndex({
-    required int gameIndex,
-    required NamedResource version,
-  }) : super(gameIndex: gameIndex, version: version);
-
-  factory VersionGameIndex.fromJson(Map<String, dynamic> json) =>
-      VersionGameIndex(
-        gameIndex: json["game_index"],
-        version: NamedResource.fromJson(json["version"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "game_index": gameIndex,
-        "version": version.toJson(),
-      };
-}
-
 class PokemonHeldItem extends IPokemonHeldItem {
   PokemonHeldItem({
-    required NamedResource item,
+    required NamedApiResource item,
     required List<PokemonHeldItemVersion> versionDetails,
   }) : super(
           item: item,
@@ -152,7 +134,7 @@ class PokemonHeldItem extends IPokemonHeldItem {
 
   factory PokemonHeldItem.fromJson(Map<String, dynamic> json) =>
       PokemonHeldItem(
-        item: NamedResource.fromJson(json["item"]),
+        item: NamedApiResource.fromJson(json["item"]),
         versionDetails: List<PokemonHeldItemVersion>.from(
             json["version_details"]
                 .map((x) => PokemonHeldItemVersion.fromJson(x))),
@@ -167,7 +149,7 @@ class PokemonHeldItem extends IPokemonHeldItem {
 
 class PokemonHeldItemVersion extends IPokemonHeldItemVersion {
   PokemonHeldItemVersion({
-    required NamedResource version,
+    required NamedApiResource version,
     required int rarity,
   }) : super(
           version: version,
@@ -176,7 +158,7 @@ class PokemonHeldItemVersion extends IPokemonHeldItemVersion {
 
   factory PokemonHeldItemVersion.fromJson(Map<String, dynamic> json) =>
       PokemonHeldItemVersion(
-        version: NamedResource.fromJson(json["version"]),
+        version: NamedApiResource.fromJson(json["version"]),
         rarity: json["rarity"],
       );
 
@@ -188,7 +170,7 @@ class PokemonHeldItemVersion extends IPokemonHeldItemVersion {
 
 class PokemonMove extends IPokemonMove {
   PokemonMove({
-    required NamedResource move,
+    required NamedApiResource move,
     required List<PokemonMoveVersion> versionGroupDetails,
   }) : super(
           move: move,
@@ -196,7 +178,7 @@ class PokemonMove extends IPokemonMove {
         );
 
   factory PokemonMove.fromJson(Map<String, dynamic> json) => PokemonMove(
-        move: NamedResource.fromJson(json["move"]),
+        move: NamedApiResource.fromJson(json["move"]),
         versionGroupDetails: List<PokemonMoveVersion>.from(
             json["version_group_details"]
                 .map((x) => PokemonMoveVersion.fromJson(x))),
@@ -211,8 +193,8 @@ class PokemonMove extends IPokemonMove {
 
 class PokemonMoveVersion extends IPokemonMoveVersion {
   PokemonMoveVersion({
-    required NamedResource moveLearnMethod,
-    required NamedResource versionGroup,
+    required NamedApiResource moveLearnMethod,
+    required NamedApiResource versionGroup,
     required int levelLearnedAt,
   }) : super(
           moveLearnMethod: moveLearnMethod,
@@ -222,8 +204,8 @@ class PokemonMoveVersion extends IPokemonMoveVersion {
 
   factory PokemonMoveVersion.fromJson(Map<String, dynamic> json) =>
       PokemonMoveVersion(
-        moveLearnMethod: NamedResource.fromJson(json["move_learn_method"]),
-        versionGroup: NamedResource.fromJson(json["version_group"]),
+        moveLearnMethod: NamedApiResource.fromJson(json["move_learn_method"]),
+        versionGroup: NamedApiResource.fromJson(json["version_group"]),
         levelLearnedAt: json["level_learned_at"],
       );
 
@@ -236,7 +218,7 @@ class PokemonMoveVersion extends IPokemonMoveVersion {
 
 class PokemonTypePast extends IPokemonTypePast {
   PokemonTypePast({
-    required NamedResource generation,
+    required NamedApiResource generation,
     required List<PokemonType> types,
   }) : super(
           generation: generation,
@@ -245,7 +227,7 @@ class PokemonTypePast extends IPokemonTypePast {
 
   factory PokemonTypePast.fromJson(Map<String, dynamic> json) =>
       PokemonTypePast(
-        generation: NamedResource.fromJson(json["generation"]),
+        generation: NamedApiResource.fromJson(json["generation"]),
         types: List<PokemonType>.from(
             json["types"].map((x) => PokemonType.fromJson(x))),
       );
@@ -259,12 +241,12 @@ class PokemonTypePast extends IPokemonTypePast {
 class PokemonType extends IPokemonType {
   PokemonType({
     required int slot,
-    required NamedResource type,
+    required NamedApiResource type,
   }) : super(slot: slot, type: type);
 
   factory PokemonType.fromJson(Map<String, dynamic> json) => PokemonType(
         slot: json["slot"],
-        type: NamedResource.fromJson(json["type"]),
+        type: NamedApiResource.fromJson(json["type"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -319,13 +301,13 @@ class PokemonSprites extends IPokemonSprites {
 
 class PokemonStat extends IPokemonStat {
   PokemonStat({
-    required NamedResource stat,
+    required NamedApiResource stat,
     required int effort,
     required int baseStat,
   }) : super(effort: effort, stat: stat, baseStat: baseStat);
 
   factory PokemonStat.fromJson(Map<String, dynamic> json) => PokemonStat(
-        stat: NamedResource.fromJson(json["stat"]),
+        stat: NamedApiResource.fromJson(json["stat"]),
         effort: json["effort"],
         baseStat: json["base_stat"],
       );

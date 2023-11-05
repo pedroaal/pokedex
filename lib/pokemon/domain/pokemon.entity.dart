@@ -12,14 +12,14 @@ class IPokemon {
   int order;
   int weight;
   List<PokemonAbility> abilities;
-  List<NamedResource> forms;
+  List<NamedApiResource> forms;
   List<VersionGameIndex> gameIndices;
   List<PokemonHeldItem> heldItems;
   String locationAreaEncounters;
   List<PokemonMove> moves;
   List<PokemonTypePast> pastTypes;
   PokemonSprites sprites;
-  NamedResource species;
+  NamedApiResource species;
   List<PokemonStat> stats;
   List<PokemonType> types;
 
@@ -70,7 +70,7 @@ class IPokemon {
 class IPokemonAbility {
   bool isHidden;
   int slot;
-  NamedResource ability;
+  NamedApiResource ability;
 
   IPokemonAbility({
     required this.isHidden,
@@ -82,21 +82,8 @@ class IPokemonAbility {
   List<Object> get props => [ability, isHidden, slot];
 }
 
-class IVersionGameIndex {
-  int gameIndex;
-  NamedResource version;
-
-  IVersionGameIndex({
-    required this.gameIndex,
-    required this.version,
-  });
-
-  @override
-  List<Object> get props => [gameIndex, version];
-}
-
 class IPokemonHeldItem {
-  NamedResource item;
+  NamedApiResource item;
   List<PokemonHeldItemVersion> versionDetails;
 
   IPokemonHeldItem({
@@ -109,7 +96,7 @@ class IPokemonHeldItem {
 }
 
 class IPokemonHeldItemVersion {
-  NamedResource version;
+  NamedApiResource version;
   int rarity;
 
   IPokemonHeldItemVersion({
@@ -122,7 +109,7 @@ class IPokemonHeldItemVersion {
 }
 
 class IPokemonMove {
-  NamedResource move;
+  NamedApiResource move;
   List<PokemonMoveVersion> versionGroupDetails;
 
   IPokemonMove({
@@ -135,8 +122,8 @@ class IPokemonMove {
 }
 
 class IPokemonMoveVersion {
-  NamedResource moveLearnMethod;
-  NamedResource versionGroup;
+  NamedApiResource moveLearnMethod;
+  NamedApiResource versionGroup;
   int levelLearnedAt;
 
   IPokemonMoveVersion({
@@ -150,7 +137,7 @@ class IPokemonMoveVersion {
 }
 
 class IPokemonTypePast {
-  NamedResource generation;
+  NamedApiResource generation;
   List<PokemonType> types;
 
   IPokemonTypePast({
@@ -164,7 +151,7 @@ class IPokemonTypePast {
 
 class IPokemonType {
   int slot;
-  NamedResource type;
+  NamedApiResource type;
 
   IPokemonType({
     required this.slot,
@@ -210,7 +197,7 @@ class IPokemonSprites {
 }
 
 class IPokemonStat {
-  NamedResource stat;
+  NamedApiResource stat;
   int effort;
   int baseStat;
 
